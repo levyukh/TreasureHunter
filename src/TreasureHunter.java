@@ -93,7 +93,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while (!choice.equals("x")) {
+        while (!choice.equals("x")&& hunter.isPlay()) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");

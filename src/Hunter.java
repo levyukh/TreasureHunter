@@ -9,6 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
+    private boolean play=true;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -27,6 +28,8 @@ public class Hunter {
         return hunterName;
     }
 
+    public boolean isPlay() { return play;}
+
     /**
      * Updates the amount of gold the hunter has.
      *
@@ -36,6 +39,8 @@ public class Hunter {
         gold += modifier;
         if (gold < 0) {
             gold = 0;
+            play=false;
+            System.out.println("YOU LOST WEAK HUNTER!!!");
         }
     }
 
