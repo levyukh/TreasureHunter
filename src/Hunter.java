@@ -107,12 +107,12 @@ public class Hunter {
     }
 
     public void testMode(){
-        addItem("Water");
-        addItem("Rope");
-        addItem("Machete");
-        addItem("Horse");
-        addItem("Boat");
-        addItem("Boots");
+        addItem("water");
+        addItem("rope");
+        addItem("machete");
+        addItem("horse");
+        addItem("boat");
+        addItem("boots");
 
     }
 
