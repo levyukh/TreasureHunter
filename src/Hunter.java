@@ -39,7 +39,7 @@ public class Hunter {
         gold += modifier;
         if (gold < 0) {
             gold = 0;
-            play=false;
+            play = false;
             System.out.println("YOU LOST WEAK HUNTER!!!");
         }
     }
@@ -76,7 +76,6 @@ public class Hunter {
         removeItemFromKit(item);
         return true;
     }
-
     /**
      * Removes an item from the kit by setting the index of the item to null.
      *
@@ -105,6 +104,16 @@ public class Hunter {
             return true;
         }
         return false;
+    }
+
+    public void testMode(){
+        addItem("Water");
+        addItem("Rope");
+        addItem("Machete");
+        addItem("Horse");
+        addItem("Boat");
+        addItem("Boots");
+
     }
 
     /**
