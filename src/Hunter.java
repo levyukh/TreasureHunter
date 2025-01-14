@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Hunter Class<br /><br />
  * This class represents the treasure hunter character (the player) in the Treasure Hunt game.
@@ -8,9 +10,16 @@ public class Hunter {
     //instance variables
     private String hunterName;
     private String[] kit;
+    private String[] treasures;
     private int gold;
     private boolean play=true;
-
+    private void addToTreasures(String toAdd){
+        int count=0;
+        while(treasures[count]==null&&count<treasures.length-1){
+            count++;
+        }
+        treasures[count]=toAdd;
+    }
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
      *
@@ -19,6 +28,7 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
+        treasures = new String[3];
         kit = new String[6]; // only 6 possible items can be stored in kit
         gold = startingGold;
     }
@@ -31,10 +41,32 @@ public class Hunter {
     public boolean isPlay() { return play;}
 
     /**
+     *
+     * adds the Treasure of the town parameter to the treasures list if the towns treasure wasn't yet collected
+     * and the treasure isn't dust
+     * @param town the town which you get the treasure from
+     */
+    public void getTreasure(Town town){
+        if(town.hasTreasure()) {
+            String townsTreasure = town.extractTreasure();
+            if(!Arrays.toString(treasures).contains(townsTreasure)){
+                System.out.println("You found "+ townsTreasure);
+                if(!townsTreasure.equals("dust")) addToTreasures(townsTreasure);
+            }else{
+                System.out.println("You already ahv that treasure so it wasn't added");
+            }
+        }else{
+            System.out.println("This town has already been searched");
+        }
+
+
+    }
+    /**
      * Updates the amount of gold the hunter has.
      *
      * @param modifier Amount to modify gold by.
      */
+
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {

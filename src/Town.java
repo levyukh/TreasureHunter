@@ -11,7 +11,15 @@ public class Town {
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
-
+    private boolean hasTreasure;
+    private final String treasure;
+    private String generateTreasure(){
+        double random=Math.random();
+        if(random<.25) return "dust";
+        else if(random<.5) return "a gem";
+        else if (random<.75) return "a trophy";
+        else return "a crown";
+    }
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
@@ -19,6 +27,8 @@ public class Town {
      * @param toughness The surrounding terrain.
      */
     public Town(Shop shop, double toughness) {
+        hasTreasure=true;
+        treasure=generateTreasure();
         this.shop = shop;
         this.terrain = getNewTerrain();
 
@@ -35,10 +45,18 @@ public class Town {
         return terrain;
     }
 
+    public boolean hasTreasure() {
+        return hasTreasure;
+    }
+
     public String getLatestNews() {
         return printMessage;
     }
 
+    public String extractTreasure(){
+        hasTreasure=false;
+        return treasure;
+    }
     /**
      * Assigns an object to the Hunter in town.
      *
