@@ -15,7 +15,7 @@ public class Hunter {
     private boolean play=true;
     private void addToTreasures(String toAdd){
         int count=0;
-        while(treasures[count]==null&&count<treasures.length-1){
+        while(treasures[count]!=null&&count<treasures.length-1){
             count++;
         }
         treasures[count]=toAdd;
@@ -53,7 +53,7 @@ public class Hunter {
                 System.out.println("You found "+ townsTreasure);
                 if(!townsTreasure.equals("dust")) addToTreasures(townsTreasure);
             }else{
-                System.out.println("You already ahv that treasure so it wasn't added");
+                System.out.println("You already have that treasure so it wasn't added");
             }
         }else{
             System.out.println("This town has already been searched");
@@ -190,6 +190,15 @@ public class Hunter {
         if (!kitIsEmpty()) {
             str += Colors.PURPLE + " and " + getInventory() + Colors.RESET;
         }
+        str+="\nTreasures Found:";
+        if(treasures[0]!=null){
+            for (int i = 0; i < treasures.length; i++) {
+                if(treasures[i]!=null) str+=" "+treasures[i];
+            }
+        }else{
+            str+=" none";
+        }
+
         return str;
     }
 
