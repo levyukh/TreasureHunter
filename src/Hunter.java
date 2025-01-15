@@ -13,6 +13,14 @@ public class Hunter {
     private String[] treasures;
     private int gold;
     private boolean play=true;
+
+    private boolean hasAllTreasures(){
+        for (int i = 0; i < treasures.length; i++) {
+            if(treasures[i]==null) return false;
+        }
+        return true;
+    }
+
     private void addToTreasures(String toAdd){
         int count=0;
         while(treasures[count]!=null&&count<treasures.length-1){
@@ -57,6 +65,10 @@ public class Hunter {
             }
         }else{
             System.out.println("This town has already been searched");
+        }
+        if(hasAllTreasures()) {
+            System.out.println("YOU WONNNN THE GREATEST TREASURE HUNTER IS YOUUU!!!!");
+            play=false;
         }
 
 
