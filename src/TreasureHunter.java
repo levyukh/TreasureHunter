@@ -13,6 +13,7 @@ public class TreasureHunter {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     // instance variables
+    private static boolean samurai=false;
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
@@ -26,6 +27,10 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+    }
+
+    public static boolean isSamurai() {
+        return samurai;
     }
 
     /**
@@ -61,6 +66,9 @@ public class TreasureHunter {
             hunter = new Hunter(name, 40);
             Town.setModeTroubleValue(1);
             Town.setBreakChance(0);
+        }if (hard.equals("samurai")){
+            hunter = new Hunter(name, 20);
+            samurai=true;
         } else {
             hunter = new Hunter(name, 20);
         }

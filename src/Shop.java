@@ -49,7 +49,7 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0) {
+            if (cost == -1) {
                 System.out.println("We ain't got none of those.");
             } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
@@ -90,6 +90,7 @@ public class Shop {
         str += "Boat: " + BOAT_COST + " gold\n";
         str += "Boots: " + BOOT_COST + " gold\n";
         str += "Shovel: " + SHOVEL_COST + " gold\n";
+        if(TreasureHunter.isSamurai()) str += "Sword: 0 gold\n";
         return str;
     }
 
@@ -151,7 +152,8 @@ public class Shop {
             case "boat" -> BOAT_COST;
             case "boots" -> BOOT_COST;
             case "shovel" -> SHOVEL_COST;
-            default -> 0;
+            case "sword" -> 0;
+            default -> -1;
         };
     }
 
