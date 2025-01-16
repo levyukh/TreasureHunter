@@ -141,21 +141,15 @@ public class Shop {
      * @return The cost of the item or 0 if the item is not found.
      */
     public int getCostOfItem(String item) {
-        if (item.equals("water")) {
-            return WATER_COST;
-        } else if (item.equals("rope")) {
-            return ROPE_COST;
-        } else if (item.equals("machete")) {
-            return MACHETE_COST;
-        } else if (item.equals("horse")) {
-            return HORSE_COST;
-        } else if (item.equals("boat")) {
-            return BOAT_COST;
-        } else if (item.equals("boots")) {
-            return BOOT_COST;
-        } else {
-            return 0;
-        }
+        return switch (item) {
+            case "water" -> WATER_COST;
+            case "rope" -> ROPE_COST;
+            case "machete" -> MACHETE_COST;
+            case "horse" -> HORSE_COST;
+            case "boat" -> BOAT_COST;
+            case "boots" -> BOOT_COST;
+            default -> 0;
+        };
     }
 
     /**
