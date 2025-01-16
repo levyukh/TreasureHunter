@@ -90,7 +90,11 @@ public class Town {
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, your " + item + " broke.";
+                if(item.equals("Water")){
+                    printMessage += "\nUnfortunately, you ran out of " + item + ".";
+                } else {
+                    printMessage += "\nUnfortunately, your " + item + " broke.";
+                }
             }
             return true;
         }
