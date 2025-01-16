@@ -6,6 +6,7 @@
 
 public class Town {
     // instance variables
+    private boolean canDig=true;
     private Hunter hunter;
     private Shop shop;
     private Terrain terrain;
@@ -40,7 +41,12 @@ public class Town {
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
     }
-
+    public boolean canDig(){
+        return canDig;
+    }
+    public void dug(){
+        canDig=false;
+    }
     public Terrain getTerrain() {
         return terrain;
     }

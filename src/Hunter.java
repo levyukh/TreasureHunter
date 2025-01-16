@@ -73,9 +73,22 @@ public class Hunter {
 
 
     }
-    public void digForGold(){
-        if(Math.random()<0.5){
-
+    public void digForGold(Town town){
+        if(hasItemInKit("shovel")){
+            if(town.canDig()) {
+                town.dug();
+                if (Math.random() < 0.5) {
+                    int dugGold = (int) (Math.random() * 20) + 1;
+                    gold += dugGold;
+                    System.out.println("You dug up " + dugGold + " gold");
+                } else {
+                    System.out.println("You dug but only found dirt");
+                }
+            }else{
+                System.out.println("You already dug here");
+            }
+        }else {
+            System.out.println("You don't have a shovel to dig");
         }
     }
     /**
