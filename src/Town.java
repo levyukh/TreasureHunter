@@ -6,6 +6,8 @@
 
 public class Town {
     // instance variables
+    private static double breakChance=0.5;
+    private static double modeTroubleValue;
     private boolean canDig=true;
     private Hunter hunter;
     private Shop shop;
@@ -47,6 +49,15 @@ public class Town {
     public void dug(){
         canDig=false;
     }
+
+    public static void setBreakChance(double breakChance) {
+        Town.breakChance = breakChance;
+    }
+
+    public static void setModeTroubleValue(double modeTroubleValue) {
+        Town.modeTroubleValue = modeTroubleValue;
+    }
+
     public Terrain getTerrain() {
         return terrain;
     }
@@ -124,6 +135,7 @@ public class Town {
         } else {
             noTroubleChance = 0.33;
         }
+        noTroubleChance-=modeTroubleValue;
         if (Math.random() > noTroubleChance) {
             printMessage = "You couldn't find any trouble";
         } else {
@@ -174,6 +186,6 @@ public class Town {
      */
     private boolean checkItemBreak() {
         double rand = Math.random();
-        return (rand < 0.5);
+        return (rand < breakChance);
     }
 }
