@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 public class Hunter {
     //instance variables
+    private final int kitLength;
     private String hunterName;
     private String[] kit;
     private String[] treasures;
@@ -34,11 +35,12 @@ public class Hunter {
      * @param hunterName The hunter's name.
      * @param startingGold The gold the hunter starts with.
      */
-    public Hunter(String hunterName, int startingGold) {
+    public Hunter(String hunterName, int startingGold, int kitLength) {
+        this.kitLength = kitLength;
         this.hunterName = hunterName;
         treasures = new String[3];
-        if(TreasureHunter.isSamurai()) kit=new String[8];
-        else kit = new String[7]; // only 7 possible items can be stored in kit
+
+         kit = new String[kitLength]; // only 7 possible items can be stored in kit
         gold = startingGold;
     }
 
@@ -46,6 +48,8 @@ public class Hunter {
     public String getHunterName() {
         return hunterName;
     }
+
+
 
     public boolean isPlay() { return play;}
 

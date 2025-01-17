@@ -13,7 +13,7 @@ public class TreasureHunter {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     // instance variables
-    private static boolean samurai=false;
+    private static boolean samurai = false;
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
@@ -55,22 +55,23 @@ public class TreasureHunter {
         String hard = SCANNER.nextLine().toLowerCase();
 
         if (hard.equals("h")) {
+            hunter = new Hunter(name, 20,7);
             hardMode = true;
         }
-        if (hard.equals("test")){
+        else if (hard.equals("test")){
             // set hunter instance variable
-            hunter = new Hunter(name, 100);
+            hunter = new Hunter(name, 100,7);
             hunter.testMode();
-        }if (hard.equals("e")){
+        }else if (hard.equals("e")){
             easyModeChange=0.5;
-            hunter = new Hunter(name, 40);
-            Town.setModeTroubleValue(1);
+            hunter = new Hunter(name, 40,7);
+            Town.setModeTroubleValue(.1);
             Town.setBreakChance(0);
-        }if (hard.equals("samurai")){
-            hunter = new Hunter(name, 20);
-            samurai=true;
+        }else if (hard.equals("samurai")){
+            hunter = new Hunter(name, 20,8);
+            samurai= true;
         } else {
-            hunter = new Hunter(name, 20);
+            hunter = new Hunter(name, 20,7);
         }
     }
 
