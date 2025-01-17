@@ -62,7 +62,7 @@ public class TreasureHunter {
             hunter = new Hunter(name, 100);
             hunter.testMode();
         }if (hard.equals("e")){
-           easyModeChange=0.5;
+            easyModeChange=0.5;
             hunter = new Hunter(name, 40);
             Town.setModeTroubleValue(1);
             Town.setBreakChance(0);

@@ -101,7 +101,11 @@ public class Shop {
      */
     public void buyItem(String item) {
         int costOfItem = checkMarketPrice(item, true);
-        if (customer.buyItem(item, costOfItem)) {
+        if(customer.hasItemInKit("sword")){
+            System.out.println("ahhhh you have a sword take the "+item);
+            customer.buyItem(item, costOfItem);
+        }
+        else if (customer.buyItem(item, costOfItem)) {
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
         } else {
             System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
